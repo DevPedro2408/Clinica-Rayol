@@ -1,0 +1,3038 @@
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 40px;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    height: 100dvh;
+}
+
+a,
+button,
+input,
+label {
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+}
+
+p,
+h1,
+span,
+h2,
+div,
+section,
+aside {
+    transition: 0.6s all;
+}
+
+.cabecalho {
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 100;
+    padding: 10px 0 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    width: 100%;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.589);
+}
+
+.containerLogo {
+    display: flex;
+    align-items: center;
+}
+
+.containerHamburguer {
+    margin: 0 22px 0 0px;
+}
+
+.menu {
+    width: 45px;
+    height: 60px;
+    box-shadow: 0 0 0 0 rgb(255, 255, 255), 0 0 0 0 rgb(255, 255, 255);
+    /* transition: box-shadow 1.1s cubic-bezier(0.12, 0.9, 1, 1.03); */
+    transition: box-shadow 1.1s cubic-bezier(0.03, 1.01, 0.63, 1);
+    border-radius: 100%;
+    cursor: pointer;
+    position: relative;
+}
+
+.hamburguer {
+    position: relative;
+    display: block;
+    background-color: #5F7AA8;
+    width: 25px;
+    height: 3px;
+    top: 29px;
+    left: 15px;
+    transition: .5s ease-in-out;
+}
+
+.hamburguer:before,
+.hamburguer:after {
+    background-color: #5F7AA8;
+    content: '';
+    display: block;
+    width: 25px;
+    height: 3px;
+    position: absolute;
+    transition: .5s ease-in-out;
+}
+
+.hamburguer:before {
+    top: -10px;
+}
+
+.hamburguer:after {
+    bottom: -10px;
+}
+
+#menu-hamburguer {
+    display: none;
+}
+
+#menu-hamburguer:checked~label .menu {
+    box-shadow: 0 -55vw 0 100vw rgb(255, 255, 255), 0 -55vw 0 100vw rgb(255, 255, 255);
+    border-radius: 20%;
+    position: relative;
+    z-index: 5;
+}
+
+#menu-hamburguer:checked~label .hamburguer {
+    transform: rotate(45deg);
+}
+
+#menu-hamburguer:checked~label .hamburguer:before {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+#menu-hamburguer:checked~label .hamburguer:after {
+    bottom: 0;
+    transform: rotate(90deg);
+}
+
+.lista {
+    font-size: 24px;
+    line-height: 50px;
+    font-weight: 700;
+    width: 200px;
+    position: fixed;
+    top: 10%;
+    right: 0;
+    display: none;
+    z-index: 10;
+}
+
+.links {
+    transition: 0.5s all;
+}
+
+.especialidades:hover {
+    text-shadow: 1px 1px 15px rgb(0, 255, 255);
+}
+
+.contatoHeader:hover {
+    text-shadow: 1px 1px 15px rgb(9, 255, 0);
+}
+
+.sobreMim:hover {
+    text-shadow: 1px 1px 15px #87713B;
+}
+
+.especialidades a {
+    color: #5F7AA8;
+}
+
+.contatoHeader a {
+    color: #67B262;
+}
+
+.sobreMim a {
+    color: #87713B;
+}
+
+.zapHeader {
+    display: none;
+}
+
+
+
+.show {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imgKids {
+    position: absolute;
+    width: 100%;
+    height: 80dvh;
+    object-fit: cover;
+    object-position: center 65%;
+    /* aspect-ratio: 443.39/665.00; Determina a largura e a altura de uma imagem */
+    mask-image: linear-gradient(to bottom, rgb(0, 0, 0) 70%, rgba(0, 0, 0, 0.01) 100%);
+    overflow: hidden;
+}
+
+.fraseBtn {
+    position: relative;
+    width: 90%;
+    top: 95px;
+    left: 30px;
+}
+
+.frase {
+    color: white;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 36px;
+}
+
+.frase span {
+    font-weight: 600;
+}
+
+.btnAgendar {
+    transition: 0.5s;
+    background-color: #63B966;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 17px;
+    color: white;
+    margin-top: 13px;
+    font-weight: 700;
+}
+
+.btnAgendar:hover {
+    transform: scale(1.1);
+}
+
+.containerBtn {
+    position: relative;
+    top: 320px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.btnPsiquiatria,
+.btnNeurologia {
+    position: relative;
+    /* IMPORTANTE: para o ::before funcionar */
+    background-color: white;
+    width: 250px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #5F7AA8;
+    z-index: 1;
+    /* precisa ser maior que o ::before */
+    overflow: hidden;
+    box-sizing: border-box;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.438);
+    transition: 0.5s;
+}
+
+.btnPsiquiatria::before,
+.btnNeurologia::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, #5F76AC, #63B966, #886F3A, #EADA4B, #F00);
+    border-radius: 30px;
+    padding: 2px;
+    /* espessura da borda */
+    box-sizing: border-box;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.btnPsiquiatria:hover,
+.btnNeurologia:hover {
+    transform: scale(1.1);
+}
+
+.imgPeca {
+    position: absolute;
+    top: 450px;
+    left: -35px;
+}
+
+.imgPeca2 {
+    position: absolute;
+    top: 500px;
+    right: 0;
+}
+
+.imgCerebro {
+    position: absolute;
+    top: 600px;
+    left: 0;
+}
+
+.imgCerebro2 {
+    display: none;
+}
+
+.imgPeca3 {
+    display: none;
+}
+
+.containerInformacoes {
+    width: 100%;
+    background-color: #5F76AC;
+    position: absolute;
+    top: 700px;
+    border-radius: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    padding: 60px 0;
+}
+
+.informacoes {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 80%;
+    font-size: 16px;
+    color: white;
+}
+
+.informacoes img {
+    width: 44px;
+    height: 44px;
+    transition: 0.7s;
+}
+
+.descricao {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    line-height: 20px;
+}
+
+.informacoes img:hover {
+    transform: rotate(30deg);
+}
+
+.descricao span {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 35px;
+}
+
+.riscoColorido {
+    height: 1px;
+    width: 250px;
+    background: linear-gradient(90deg, #5F76AC 0%, #63B966 25.48%, #886F3A 51.92%, #EADA4B 77.88%, #F00 100%);
+}
+
+.containerContato {
+    position: absolute;
+    top: 1470px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#contato {
+    scroll-margin-top: 40vh;
+}
+
+.contato {
+    color: #63B966;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.contatoInfo {
+    text-align: center;
+    font-size: 16px;
+    line-height: 25px;
+}
+
+.contatoInfo a {
+    color: #5F76AC;
+}
+
+.telefone {
+    font-size: 19px;
+    font-weight: 600;
+    color: #5F76AC;
+}
+
+.containerEspecialidades {
+    position: absolute;
+    top: 1610px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.containerPsiNeuro {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+#especialidades {
+    scroll-margin-top: 12vh;
+}
+
+.especialidadesPsiNeu {
+    font-size: 24px;
+    font-weight: 700;
+    color: #5F76AC;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.especialidadesPsiNeu span {
+    width: 40px;
+    height: 4px;
+    background-color: #5F76AC;
+    border-radius: 20px;
+}
+
+.containerEspecialidades span {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.psiquiatria,
+.neurologia {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 35px 30px;
+    color: white;
+    gap: 30px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 50px;
+    position: relative;
+}
+
+.psiquiatria {
+    background-image: url(assets/psiquiatria.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.psiquiatria::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #5f76acc2;
+    z-index: 0;
+}
+
+.psiquiatria span,
+.psiquiatria p {
+    position: relative;
+    z-index: 1;
+}
+
+.neurologia {
+    background-image: url(assets/neurologia.jpg);
+    background-position: center;
+    background-size: cover;
+    padding: 45px 30px;
+}
+
+.neurologia::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #569750c5;
+    z-index: 0;
+}
+
+.neurologia span,
+.neurologia p {
+    position: relative;
+    z-index: 1;
+}
+
+.bordaGradiente {
+    position: absolute;
+    top: 2250px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.containerCurriculo {
+    transition: 0.6s all;
+    width: 300px;
+    padding: 30px 0;
+    border-radius: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    /* TRUQUE DO GRADIENTE NA BORDA */
+    background:
+        linear-gradient(white, white) padding-box,
+        /* fundo branco */
+        linear-gradient(90deg, #5F76AC, #63B966, #886F3A, #EADA4B, red) border-box;
+    border: 2px solid transparent;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+#sobreMim {
+    scroll-margin-top: 12vh;
+}
+
+.imgDoutor img {
+    transition: 0.6s all;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    object-position: bottom;
+    border-radius: 30px;
+
+    background:
+        linear-gradient(white, white) padding-box,
+        /* fundo branco */
+        linear-gradient(90deg, #5F76AC, #63B966, #886F3A, #EADA4B, red) border-box;
+    border: 1px solid transparent;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.containerTexto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nomeDoutor {
+    transition: 0.6s all;
+    font-size: 24px;
+    font-weight: 700;
+    color: #5F76AC;
+    width: 65%;
+    text-align: center;
+}
+
+.curriculoDoutor {
+    transition: 0.6s all;
+    width: 85%;
+    white-space: pre-line;
+    color: #5F76AC;
+}
+
+.listaCurriculo {
+        list-style-type: disc;
+        margin-left: 30px;
+    }
+
+.containerFooter {
+    transition: 0.6s all;
+    position: absolute;
+    top: 2890px;
+    width: 100%;
+    background-color: #DDD;
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+}
+
+.horarios {
+    transition: 0.6s all;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin: 45px 45px 0 0;
+    color: #5F76AC;
+    gap: 15px;
+}
+
+.horarios h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.horarios span {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.logoFooter {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.containerContato2 {
+    display: none;
+}
+
+.containerBtnFlutuante {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-flutuante {
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    width: 200px;
+    height: 45px;
+    background-color: #63B966;
+    border-radius: 23px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    z-index: 100;
+    text-decoration: none;
+    transition: 0.6s all;
+    box-shadow: 1px 1px 8px black;
+}
+
+.btn-flutuante:hover {
+    transform: scale(1.1);
+}
+
+.btn-flutuante img {
+    width: 23.5px;
+    height: 23.5px;
+}
+
+.numeroClinica {
+    font-size: 15px;
+    color: white;
+    font-weight: 600;
+}
+
+
+.exitShow {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@media (min-width: 415px) {
+    .cabecalho {
+        box-sizing: border-box;
+        position: fixed;
+        z-index: 100;
+        padding: 10px 0 0 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: white;
+        width: 100%;
+        box-shadow: 3px 3px 15px rgb(110, 110, 110);
+    }
+
+    .containerLogo {
+        display: flex;
+        align-items: center;
+    }
+
+    .containerHamburguer {
+        margin: 0 22px 0 0px;
+    }
+
+    .menu {
+        width: 45px;
+        height: 60px;
+        box-shadow: 0 0 0 0 rgb(255, 255, 255), 0 0 0 0 rgb(255, 255, 255);
+        /* transition: box-shadow 1.1s cubic-bezier(0.12, 0.9, 1, 1.03); */
+        transition: box-shadow 1.1s cubic-bezier(0.03, 1.01, 0.63, 1);
+        border-radius: 100%;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .hamburguer {
+        position: relative;
+        display: block;
+        background-color: #5F7AA8;
+        width: 25px;
+        height: 3px;
+        top: 29px;
+        left: 15px;
+        transition: .5s ease-in-out;
+    }
+
+    .hamburguer:before,
+    .hamburguer:after {
+        background-color: #5F7AA8;
+        content: '';
+        display: block;
+        width: 25px;
+        height: 3px;
+        position: absolute;
+        transition: .5s ease-in-out;
+    }
+
+    .hamburguer:before {
+        top: -10px;
+    }
+
+    .hamburguer:after {
+        bottom: -10px;
+    }
+
+    #menu-hamburguer {
+        display: none;
+    }
+
+    #menu-hamburguer:checked~label .menu {
+        box-shadow: 0 -55vw 0 100vw rgb(255, 255, 255), 0 -55vw 0 100vw rgb(255, 255, 255);
+        border-radius: 20%;
+        position: relative;
+        z-index: 5;
+    }
+
+    #menu-hamburguer:checked~label .hamburguer {
+        transform: rotate(45deg);
+    }
+
+    #menu-hamburguer:checked~label .hamburguer:before {
+        top: 0;
+        transform: rotate(90deg);
+    }
+
+    #menu-hamburguer:checked~label .hamburguer:after {
+        bottom: 0;
+        transform: rotate(90deg);
+    }
+
+    .links {
+        transition: 0.5s all;
+    }
+
+    .zapHeader {
+        display: none;
+    }
+
+    .imgKids {
+        position: absolute;
+        object-fit: cover;
+        width: 100%;
+        /* aspect-ratio: 443.39/665.00; Determina a largura e a altura de uma imagem */
+        mask-image: linear-gradient(to bottom, rgb(0, 0, 0) 70%, rgba(0, 0, 0, 0.01) 100%);
+    }
+
+    .fraseBtn {
+        position: relative;
+        width: 70%;
+        top: 95px;
+        left: 30px;
+    }
+
+    .frase {
+        color: white;
+        font-size: 32px;
+        font-weight: 300;
+        line-height: 36px;
+    }
+
+    .frase span {
+        font-weight: 600;
+    }
+
+    .btnAgendar {
+        transition: 0.5s;
+        background-color: #63B966;
+        border: none;
+        border-radius: 10px;
+        padding: 5px 17px;
+        color: white;
+        margin-top: 13px;
+        font-weight: 700;
+    }
+
+    .btnAgendar:hover {
+        transform: scale(1.1);
+    }
+
+    .containerBtn {
+        position: relative;
+        top: 360px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .btnPsiquiatria,
+    .btnNeurologia {
+        position: relative;
+        /* IMPORTANTE: para o ::before funcionar */
+        background-color: white;
+        width: 250px;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 30px;
+        font-size: 20px;
+        font-weight: 700;
+        color: #5F7AA8;
+        z-index: 1;
+        /* precisa ser maior que o ::before */
+        overflow: hidden;
+        box-sizing: border-box;
+        box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.438);
+        transition: 0.5s;
+    }
+
+    .btnPsiquiatria::before,
+    .btnNeurologia::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, #5F76AC, #63B966, #886F3A, #EADA4B, #F00);
+        border-radius: 30px;
+        padding: 2px;
+        /* espessura da borda */
+        box-sizing: border-box;
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    .btnPsiquiatria:hover,
+    .btnNeurologia:hover {
+        transform: scale(1.1);
+    }
+
+    .imgPeca {
+        top: 490px;
+        left: -35px;
+    }
+
+    .imgPeca2 {
+        top: 560px;
+        right: 0;
+    }
+
+    .imgCerebro {
+        top: 630px;
+        left: 0;
+    }
+
+    .containerInformacoes {
+        width: 100%;
+        background-color: #5F76AC;
+        position: absolute;
+        top: 750px;
+        border-radius: 70px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 50px;
+        padding: 60px 0;
+    }
+
+    .informacoes {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        width: 80%;
+        font-size: 16px;
+        color: white;
+    }
+
+    .informacoes img {
+        width: 44px;
+        height: 44px;
+        transition: 0.7s;
+    }
+
+    .descricao {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        line-height: 20px;
+    }
+
+    .informacoes img:hover {
+        transform: rotate(30deg);
+    }
+
+    .descricao span {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 35px;
+    }
+
+    .riscoColorido {
+        height: 1px;
+        width: 250px;
+        background: linear-gradient(90deg, #5F76AC 0%, #63B966 25.48%, #886F3A 51.92%, #EADA4B 77.88%, #F00 100%);
+    }
+
+    .containerContato {
+        position: absolute;
+        top: 1520px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    #contato {
+        scroll-margin-top: 40vh;
+    }
+
+    .contato {
+        color: #63B966;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .contatoInfo {
+        text-align: center;
+        font-size: 16px;
+        line-height: 25px;
+    }
+
+    .telefone {
+        font-size: 19px;
+        font-weight: 600;
+        color: #5F76AC;
+    }
+
+    .containerEspecialidades {
+        position: absolute;
+        top: 1660px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+
+    #especialidades {
+        scroll-margin-top: 12vh;
+    }
+
+    .especialidadesPsiNeu {
+        font-size: 24px;
+        font-weight: 700;
+        color: #5F76AC;
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .especialidadesPsiNeu span {
+        width: 40px;
+        height: 4px;
+        background-color: #5F76AC;
+        border-radius: 20px;
+    }
+
+    .containerEspecialidades span {
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .psiquiatria,
+    .neurologia {
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 35px 30px;
+        color: white;
+        gap: 30px;
+        text-align: center;
+        overflow: hidden;
+        border-radius: 50px;
+        position: relative;
+    }
+
+    .psiquiatria {
+        background-image: url(assets/psiquiatria.jpg);
+        background-position: center;
+        background-size: cover;
+    }
+
+    .psiquiatria::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: #5f76acc2;
+        z-index: 0;
+    }
+
+    .psiquiatria span,
+    .psiquiatria p {
+        position: relative;
+        z-index: 1;
+    }
+
+    .neurologia {
+        background-image: url(assets/neurologia.jpg);
+        background-position: center;
+        background-size: cover;
+        padding: 45px 30px;
+    }
+
+    .neurologia::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: #569750c5;
+        z-index: 0;
+    }
+
+    .neurologia span,
+    .neurologia p {
+        position: relative;
+        z-index: 1;
+    }
+
+    #sobreMim {
+        scroll-margin-top: 12vh;
+    }
+
+    .imgDoutor img {
+        transition: 0.6s all;
+        height: 200px;
+        width: 200px;
+        object-fit: cover;
+        object-position: bottom;
+        border-radius: 30px;
+    }
+
+    .nomeDoutor {
+        transition: 0.6s all;
+        font-size: 24px;
+        font-weight: 700;
+        color: #5F76AC;
+        width: 65%;
+        text-align: center;
+    }
+
+    .curriculoDoutor {
+        transition: 0.6s all;
+        width: 85%;
+        white-space: pre-line;
+        color: #5F76AC;
+    }
+
+    .containerFooter {
+        transition: 0.6s all;
+        position: absolute;
+        top: 2920px;
+        width: 100%;
+        background-color: #DDD;
+        border-top-left-radius: 60px;
+        border-top-right-radius: 60px;
+    }
+
+    .horarios {
+        transition: 0.6s all;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        margin: 45px 45px 0 0;
+        color: #5F76AC;
+        gap: 15px;
+    }
+
+    .horarios h2 {
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .horarios span {
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .logoFooter {
+        text-align: center;
+        margin: 50px 0;
+    }
+}
+
+@media (min-width: 440px) {
+    #menu-hamburguer:checked~label .menu {
+        box-shadow: 0 -55vw 0 100vw rgb(255, 255, 255), 0 -55vw 0 100vw rgb(255, 255, 255);
+        border-radius: 20%;
+        position: relative;
+        z-index: 5;
+    }
+
+    .lista {
+        top: 12%;
+    }
+
+    .containerContato {
+        top: 1505px;
+    }
+
+    .containerEspecialidades {
+        top: 1645px;
+    }
+
+    .bordaGradiente {
+        top: 2280px;
+    }
+
+    .containerFooter {
+        top: 2920px;
+    }
+}
+
+@media (min-width: 514px) {
+    #menu-hamburguer:checked~label .menu {
+        box-shadow: 0 -65vw 0 100vw rgb(255, 255, 255), 0 -65vw 0 100vw rgb(255, 255, 255);
+    }
+
+    .lista {
+        top: 9%;
+    }
+
+    .frase {
+        font-size: 36px;
+    }
+
+    .containerBtn {
+        top: 420px;
+    }
+
+    .containerInformacoes {
+        top: 800px;
+    }
+
+    .imgPeca {
+        top: 550px;
+    }
+
+    .imgPeca2 {
+        top: 620px;
+    }
+
+    .imgCerebro {
+        top: 700px;
+    }
+}
+
+@media (min-width: 543px) {
+
+
+    .containerBtn {
+        top: 460px;
+    }
+
+    .containerInformacoes {
+        top: 840px;
+    }
+
+    .imgPeca {
+        top: 590px;
+    }
+
+    .imgPeca2 {
+        top: 660px;
+    }
+
+    .imgCerebro {
+        top: 740px;
+    }
+}
+
+@media (min-width: 543px) {
+    .imgKids {
+        width: 100%;
+        height: 100dvh;
+        object-fit: cover;
+        object-position: center 65%;
+    }
+
+    .containerBtn {
+        top: 490px;
+    }
+
+    .containerInformacoes {
+        top: 870px;
+    }
+
+    .imgPeca {
+        top: 610px;
+    }
+
+    .imgPeca2 {
+        top: 690px;
+    }
+
+    .imgCerebro {
+        top: 770px;
+    }
+}
+
+@media (min-width: 588px) {
+    #menu-hamburguer:checked~label .menu {
+        box-shadow: 0 -70vw 0 100vw rgb(255, 255, 255), 0 -70vw 0 100vw rgb(255, 255, 255);
+    }
+
+    .imgKids {
+        width: 100%;
+        height: 110dvh;
+        object-fit: cover;
+        object-position: center 65%;
+    }
+
+    .fraseBtn {
+        top: 110px;
+        left: 40px;
+    }
+
+    .frase {
+        font-size: 42px;
+    }
+
+    .containerBtn {
+        top: 540px;
+    }
+
+    .containerInformacoes {
+        top: 910px;
+    }
+
+    .riscoColorido {
+        height: 1px;
+        width: 300px;
+        background: linear-gradient(90deg, #5F76AC 0%, #63B966 25.48%, #886F3A 51.92%, #EADA4B 77.88%, #F00 100%);
+    }
+
+    .imgPeca {
+        top: 630px;
+    }
+
+    .imgPeca2 {
+        top: 730px;
+    }
+
+    .imgCerebro {
+        top: 810px;
+    }
+}
+
+@media (min-width: 700px) {
+    .lista {
+        top: 12%;
+    }
+
+    .containerLogo div {
+        font-size: 20px;
+    }
+
+    .fraseBtn {
+        top: 120px;
+        left: 50px;
+    }
+
+    .frase {
+        line-height: 46px;
+    }
+
+    .btnAgendar {
+        width: 200px;
+        height: 35px;
+        margin-top: 20px;
+    }
+
+    .btnPsiquiatria,
+    .btnNeurologia {
+        width: 300px;
+        height: 90px;
+        font-size: 24px;
+    }
+
+    .riscoColorido {
+        height: 2px;
+        width: 350px;
+        background: linear-gradient(90deg, #5F76AC 0%, #63B966 25.48%, #886F3A 51.92%, #EADA4B 77.88%, #F00 100%);
+    }
+
+    .imgPeca {
+        top: 610px;
+        width: 120px;
+        height: 120px;
+    }
+
+    .imgPeca2 {
+        top: 710px;
+        width: 102px;
+        height: 129px;
+    }
+
+    .imgCerebro {
+        top: 790px;
+        width: 124px;
+        height: 181px;
+    }
+
+    .informacoes img {
+        width: 46px;
+        height: 46px;
+    }
+
+    .descricao span {
+        font-size: 28px;
+    }
+
+    .descricao {
+        font-size: 20px;
+    }
+
+    .contato {
+        font-size: 28px;
+    }
+
+    .contatoInfo {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .telefone {
+        font-size: 22px;
+    }
+
+    .especialidadesPsiNeu {
+        font-size: 28px;
+        gap: 28px;
+    }
+
+    .especialidadesPsiNeu span {
+        width: 50px;
+        height: 5px;
+    }
+
+    .containerPsiNeuro span {
+        font-size: 28px;
+    }
+
+    .containerPsiNeuro p {
+        font-size: 18px;
+    }
+
+    .psiquiatria,
+    .neurologia {
+        width: 330px;
+        height: 180px;
+        justify-content: center;
+    }
+
+    .bordaGradiente {
+        top: 2320px;
+    }
+
+    .containerCurriculo {
+        padding: 35px 35px;
+    }
+
+    .containerCurriculo img {
+        width: 240px;
+        height: 240px;
+        object-position: center 70%;
+    }
+
+    .nomeDoutor {
+        font-size: 28px;
+        width: 80%;
+    }
+
+    .curriculoDoutor {
+        font-size: 18px;
+        width: 95%;
+    }
+
+    .containerFooter {
+        top: 3050px;
+    }
+
+    .horarios {
+        margin: 65px 65px 0 0;
+    }
+
+    .horarios h2 {
+        font-size: 28px;
+    }
+
+    .horarios span {
+        font-size: 20px;
+    }
+
+    .horarios p {
+        font-size: 20px;
+    }
+
+    .logoFooter img {
+        width: 125px;
+        height: 136px;
+    }
+
+    .btn-flutuante {
+        position: fixed;
+        top: 645px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 474px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 420px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (max-height: 284px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 180px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 284px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 210px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 314px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 240px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 344px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 270px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 358px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 285px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 374px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 300px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 388px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 315px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 404px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 330px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 414px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 345px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 424px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 360px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 438px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 375px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 454px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 390px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 464px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 405px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 474px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 420px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 500px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 440px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 521px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 460px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 537px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 480px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 554px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 500px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 574px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 510px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 604px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 520px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 644px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 545px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 644px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 570px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 670px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 585px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 694px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 600px;
+        right: 40px;
+        width: 200px;
+        height: 45px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 725px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 650px;
+        right: 40px;
+        width: 250px;
+        height: 50px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 750px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 700px;
+        right: 40px;
+        width: 250px;
+        height: 50px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+
+    .btn-flutuante img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .numeroClinica {
+        font-size: 22px;
+    }
+}
+
+@media (min-height: 775px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 720px;
+        right: 40px;
+        width: 300px;
+        height: 60px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 800px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 740px;
+        right: 40px;
+        width: 300px;
+        height: 60px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+
+    .numeroClinica {
+        font-size: 22px;
+    }
+}
+
+@media (min-height: 820px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 760px;
+        right: 40px;
+        width: 300px;
+        height: 60px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 840px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 780px;
+        right: 40px;
+        width: 300px;
+        height: 60px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 870px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 810px;
+        right: 40px;
+        width: 300px;
+        height: 60px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-height: 900px) {
+    .btn-flutuante {
+        position: fixed;
+        top: 850px;
+        right: 40px;
+        width: 300px;
+        height: 60px;
+        background-color: #63B966;
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        z-index: 100;
+        text-decoration: none;
+    }
+}
+
+@media (min-width: 900px) {
+    .cabecalho {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 15px 30px;
+    }
+
+    .containerHamburguer {
+        display: none;
+    }
+
+    .lista {
+        position: static;
+        display: flex;
+        width: auto;
+        gap: 30px;
+        align-items: center;
+        font-size: 22px;
+    }
+
+    .zapHeader {
+        display: flex;
+        height: 32px;
+        width: 32px;
+    }
+
+    .lista {
+        top: 12%;
+    }
+
+    .containerLogo div {
+        font-size: 20px;
+    }
+
+    .riscoColorido {
+        height: 2px;
+        width: 400px;
+        background: linear-gradient(90deg, #5F76AC 0%, #63B966 25.48%, #886F3A 51.92%, #EADA4B 77.88%, #F00 100%);
+    }
+
+    .fraseBtn {
+        top: 120px;
+        left: 50px;
+    }
+
+    .frase {
+        line-height: 46px;
+    }
+
+    .btnAgendar {
+        width: 200px;
+        height: 35px;
+        margin-top: 20px;
+    }
+
+    .containerBtn {
+        top: 600px;
+        flex-direction: row;
+        justify-content: center;
+        gap: 100px;
+    }
+
+    .btnPsiquiatria,
+    .btnNeurologia {
+        width: 300px;
+        height: 90px;
+        font-size: 24px;
+    }
+
+    .imgPeca {
+        top: 610px;
+        width: 120px;
+        height: 120px;
+    }
+
+    .imgPeca2 {
+        top: 710px;
+        width: 102px;
+        height: 129px;
+    }
+
+    .imgCerebro {
+        top: 790px;
+        width: 124px;
+        height: 181px;
+    }
+
+    .informacoes img {
+        width: 46px;
+        height: 46px;
+    }
+
+    .descricao span {
+        font-size: 30px;
+    }
+
+    .descricao {
+        font-size: 22px;
+    }
+
+    .containerContato {
+        top: 1525px;
+    }
+
+    .contato {
+        font-size: 30px;
+    }
+
+    .contatoInfo {
+        font-size: 22px;
+        line-height: 32px;
+    }
+
+    .telefone {
+        font-size: 24px;
+    }
+
+    .containerEspecialidades {
+        top: 1700px;
+        gap: 60px;
+    }
+
+    .especialidadesPsiNeu {
+        width: 100%;
+        justify-content: space-between;
+        font-size: 30px;
+    }
+
+    .containerPsiNeuro {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .especialidadesPsiNeu span {
+        width: 220px;
+        height: 5px;
+    }
+
+    .containerPsiNeuro span {
+        font-size: 30px;
+    }
+
+    .containerPsiNeuro p {
+        font-size: 20px;
+    }
+
+    .psiquiatria,
+    .neurologia {
+        width: 340px;
+        height: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 30px;
+        font-size: 24px;
+    }
+
+    .bordaGradiente {
+        top: 2150px;
+    }
+
+    .containerCurriculo {
+        flex-direction: row;
+        justify-content: center;
+        gap: 50px;
+        width: 750px;
+        height: 350px;
+        padding: 35px 70px;
+    }
+
+    .containerTexto {
+        font-size: 22px;
+    }
+
+    .nomeDoutor {
+        width: 100%;
+        display: flex;
+        font-size: 28px;
+    }
+
+    .curriculoDoutor {
+        width: 100%;
+        line-height: 25px;
+    }
+
+    .imgDoutor img {
+        width: 260px;
+        height: 300px;
+        object-position: center 90%;
+    }
+
+    .containerFooter {
+        top: 2650px;
+    }
+
+    .horarios {
+        margin: 75px 80px 0 0;
+    }
+
+    .horarios h2 {
+        font-size: 30px;
+    }
+
+    .horarios span {
+        font-size: 22px;
+    }
+
+    .horarios p {
+        font-size: 22px;
+    }
+
+    .logoFooter {
+        margin: 60px 0;
+    }
+
+    .logoFooter img {
+        width: 135px;
+        height: 146px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .riscoColorido {
+        height: 2px;
+        width: 450px;
+        background: linear-gradient(90deg, #5F76AC 0%, #63B966 25.48%, #886F3A 51.92%, #EADA4B 77.88%, #F00 100%);
+    }
+
+    .descricao span {
+        font-size: 32px;
+    }
+
+    .descricao {
+        font-size: 24px;
+    }
+
+    .containerEspecialidades {
+        top: 1540px;
+    }
+
+    .bordaGradiente {
+        top: 2000px;
+    }
+
+    .containerFooter {
+        top: 2520px;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        align-items: center;
+        color: #5F76AC;
+        padding: 60px 0;
+    }
+
+    .logoFooter {
+        width: 200px;
+    }
+
+    .logoFooter img {
+        height: 150px;
+    }
+
+    .horarios {
+        margin: 0;
+        height: 100px;
+        flex-direction: row-reverse;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .horarios h2 {
+        font-size: 32px;
+    }
+
+    .horarios p {
+        font-size: 24px;
+    }
+
+    .horarios span {
+        font-size: 24px;
+    }
+
+    .containerContato {
+        display: none;
+    }
+
+    .containerContato2 {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 200px;
+        text-wrap: nowrap;
+    }
+
+    .contatoInfo {
+        font-size: 24px;
+        text-align: start;
+        line-height: 40px;
+    }
+
+    .contato {
+        color: #5F76AC;
+        font-size: 32px;
+    }
+
+    .telefone {
+        font-size: 26px;
+    }
+}
+
+
+@media (min-width: 1100px) {
+    .imgPeca {
+        top: 800px;
+        left: initial;
+        right: 0;
+        width: 145px;
+        height: 145px;
+    }
+
+    .imgPeca2 {
+        display: none;
+    }
+
+    .imgCerebro {
+        top: 800px;
+        width: 129px;
+        height: 186px;
+    }
+
+    .imgCerebro2 {
+        transform: rotate(-33.943deg);
+        width: 100px;
+        height: 100px;
+        display: flex;
+        position: absolute;
+        top: 700px;
+        left: 80%;
+    }
+
+    .imgPeca3 {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        position: absolute;
+        top: 700px;
+        left: 10%;
+    }
+
+    .containerInformacoes {
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 40px;
+        top: 910px;
+        border-radius: 100px;
+        padding: 60px 0;
+    }
+
+    .informacoes {
+        width: 30%;
+        font-size: 20px;
+    }
+
+    .informacoes span {
+        font-size: 25px;
+    }
+
+    .descricao {
+        line-height: 30px;
+    }
+
+    .riscoColorido {
+        height: 250px;
+        width: 2px;
+        background: linear-gradient(180deg, #5F76AC 0%, #63B966 25.48%, #886F3A 51.92%, #EADA4B 77.88%, #F00 100%);
+    }
+
+    .containerEspecialidades {
+        top: 1350px;
+    }
+
+    .bordaGradiente {
+        top: 1810px;
+    }
+
+    .containerCurriculo {
+        flex-direction: row;
+        justify-content: center;
+        gap: 50px;
+        width: 850px;
+        height: 350px;
+        padding: 35px 70px;
+    }
+
+    .nomeDoutor {
+        width: 100%;
+        display: flex;
+        font-size: 30px;
+    }
+
+    .curriculoDoutor {
+        width: 100%;
+        line-height: 25px;
+        font-size: 22px;
+    }
+
+    .imgDoutor img {
+        width: 260px;
+        height: 300px;
+        object-position: center 90%;
+    }
+
+    .containerFooter {
+        top: 2320px;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        align-items: center;
+        color: #5F76AC;
+        padding: 60px 0;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 1300px) {
+    .cabecalho {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 30px;
+    }
+
+    .containerLogo div {
+        font-size: 22px;
+    }
+
+    .containerHamburguer {
+        display: none;
+    }
+
+    .lista {
+        position: static;
+        display: flex;
+        width: auto;
+        gap: 100px;
+        align-items: center;
+        font-size: 22px;
+    }
+
+    .lista img {
+        height: 32px;
+        width: 32px;
+    }
+
+    /* #contato {
+        scroll-margin-top: none;
+    } */
+
+    .imgKids {
+        width: 100%;
+        height: 135dvh;
+        object-fit: cover;
+        object-position: center 65%;
+    }
+
+    .fraseBtn {
+        top: 110px;
+        left: 80px;
+    }
+
+    .frase {
+        font-size: 45px;
+        width: 600px;
+        line-height: 70px;
+    }
+
+    .btnAgendar {
+        width: 300px;
+        height: 45px;
+        font-size: 24px;
+    }
+
+    .containerBtn {
+        top: 570px;
+        flex-direction: row;
+        justify-content: center;
+        gap: 100px;
+    }
+
+
+    .btnPsiquiatria,
+    .btnNeurologia {
+        width: 350px;
+        height: 90px;
+        font-size: 24px;
+    }
+
+    .imgPeca {
+        top: 850px;
+        left: initial;
+        right: 0;
+        width: 135px;
+        height: 135px;
+    }
+
+    .imgPeca2 {
+        display: none;
+    }
+
+    .imgCerebro {
+        top: 820px;
+        width: 129px;
+        height: 186px;
+    }
+
+    .imgCerebro2 {
+        position: absolute;
+        top: 700px;
+        left: 80%;
+    }
+
+    .imgPeca3 {
+        position: absolute;
+        top: 700px;
+        left: 17%;
+    }
+
+    .containerInformacoes {
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 40px;
+        top: 960px;
+        border-radius: 100px;
+        padding: 60px 0;
+    }
+
+    .informacoes {
+        width: 25%;
+        font-size: 22px;
+    }
+
+    .informacoes span {
+        font-size: 28px;
+    }
+
+    .descricao {
+        line-height: 30px;
+    }
+
+    .riscoColorido {
+        height: 250px;
+        width: 2px;
+        background: linear-gradient(180deg, #5F76AC 0%, #63B966 25.48%, #886F3A 51.92%, #EADA4B 77.88%, #F00 100%);
+    }
+
+    .containerContato {
+        display: none;
+    }
+
+    .containerEspecialidades {
+        top: 1400px;
+        gap: 80px;
+    }
+
+    .containerPsiNeuro {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .especialidadesPsiNeu {
+        width: 100%;
+        justify-content: space-between;
+        font-size: 38px;
+    }
+
+    .especialidadesPsiNeu span {
+        width: 400px;
+        height: 6px;
+    }
+
+    .psiquiatria,
+    .neurologia {
+        width: 580px;
+        height: 330px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        font-size: 24px;
+    }
+
+    .psiquiatria span {
+        font-size: 28px;
+    }
+
+    .neurologia span {
+        font-size: 28px;
+    }
+
+    .psiquiatria p {
+        width: 490px;
+        font-size: 22px;
+        line-height: 25px;
+    }
+
+    .neurologia p {
+        width: 400px;
+        font-size: 22px;
+        line-height: 25px;
+    }
+
+    .bordaGradiente {
+        top: 1950px;
+    }
+
+    .containerCurriculo {
+        flex-direction: row;
+        justify-content: center;
+        gap: 50px;
+        width: 1050px;
+        height: 450px;
+    }
+
+    .containerTexto {
+        font-size: 22px;
+    }
+
+    .nomeDoutor {
+        text-wrap: nowrap;
+        width: 100%;
+        font-size: 34px;
+        display: flex;
+    }
+
+    .curriculoDoutor {
+        width: 100%;
+        line-height: 30px;
+    }
+
+    .imgDoutor img {
+        width: 350px;
+        height: 350px;
+    }
+
+    .containerFooter {
+        top: 2550px;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        align-items: center;
+        color: #5F76AC;
+        padding: 60px 0;
+    }
+
+    .logoFooter {
+        width: 200px;
+    }
+
+    .logoFooter img {
+        height: 150px;
+    }
+
+    .horarios {
+        margin: 0;
+        height: 100px;
+        flex-direction: row-reverse;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .horarios h2 {
+        font-size: 34px;
+    }
+
+    .horarios p {
+        font-size: 24px;
+    }
+
+    .horarios span {
+        font-size: 24px;
+    }
+
+    .containerContato2 {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 200px;
+        text-wrap: nowrap;
+
+    }
+
+    .contatoInfo {
+        font-size: 24px;
+        text-align: start;
+        line-height: 40px;
+    }
+
+    .contato {
+        color: #5F76AC;
+        font-size: 34px;
+    }
+
+    .telefone {
+        font-size: 30px;
+    }
+
+    .textoFooter {
+        /* font-size: 18px; */
+    }
+
+}
+
+@media (min-width: 1300px) and (min-height: 800px) {
+    .imgKids {
+        object-position: center 75%;
+    }
+}
+
+@media (min-width: 1550px) {
+    .cabecalho {
+        transition: 0.6s all;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 15px 30px;
+    }
+
+    .containerLogo div {
+        transition: 0.6s all;
+        font-size: 24px;
+    }
+
+    .containerHamburguer {
+        display: none;
+    }
+
+    .lista {
+        transition: 0.6s all;
+        position: static;
+        display: flex;
+        width: auto;
+        gap: 100px;
+        align-items: center;
+        font-size: 24px;
+    }
+
+    .lista img {
+        height: 32px;
+        width: 32px;
+    }
+
+    /* #contato {
+        scroll-margin-top: none;
+    } */
+
+    .imgKids {
+        width: 100%;
+        height: 140dvh;
+        object-fit: cover;
+        object-position: center 65%;
+    }
+
+    .imgPeca {
+        top: 1000px;
+        left: initial;
+        right: 0;
+        width: 135px;
+        height: 135px;
+    }
+
+    .imgCerebro {
+        top: 980px;
+        width: 129px;
+        height: 186px;
+    }
+
+    .imgCerebro2 {
+        position: absolute;
+        top: 860px;
+        left: 80%;
+    }
+
+    .imgPeca3 {
+        position: absolute;
+        top: 850px;
+        left: 17%;
+    }
+
+    .fraseBtn {
+        top: 130px;
+        left: 80px;
+    }
+
+    .frase {
+        font-size: 55px;
+        width: 700px;
+        line-height: 70px;
+    }
+
+    .btnAgendar {
+        width: 350px;
+        height: 45px;
+        font-size: 24px;
+    }
+
+    .containerBtn {
+        transition: 0.6s all;
+        top: 750px;
+        flex-direction: row;
+        justify-content: center;
+        gap: 100px;
+    }
+
+
+    .btnPsiquiatria,
+    .btnNeurologia {
+        transition: 0.6s all;
+        width: 350px;
+        height: 90px;
+        font-size: 24px;
+    }
+
+    .containerInformacoes {
+        transition: 0.6s all;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 40px;
+        top: 1100px;
+        border-radius: 100px;
+    }
+
+    .informacoes {
+        width: 22%;
+        font-size: 24px;
+    }
+
+    .informacoes span {
+        font-size: 30px;
+    }
+    .descricao {
+        line-height: 30px;
+    }
+    .riscoColorido {
+        height: 250px;
+        width: 1px;
+        background: linear-gradient(180deg, #5F76AC 0%, #63B966 25.48%, #886F3A 51.92%, #EADA4B 77.88%, #F00 100%);
+    }
+    .containerContato {
+        display: none;
+    }
+    .containerEspecialidades {
+        transition: 0.6s all;
+        top: 1550px;
+        gap: 80px;
+    }
+    .containerPsiNeuro {
+        transition: 0.6s all;
+        display: flex;
+        flex-direction: row;
+        gap: 100px;
+    }
+    .especialidadesPsiNeu {
+        width: 100%;
+        justify-content: space-between;
+        font-size: 40px;
+    }
+    .especialidadesPsiNeu span {
+        width: 400px;
+        height: 6px;
+    }
+    .psiquiatria,
+    .neurologia {
+        transition: 0.6s all;
+        width: 630px;
+        height: 330px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        font-size: 24px;
+    }
+    .psiquiatria span {
+        font-size: 30px;
+    }
+    .neurologia span {
+        font-size: 30px;
+    }
+    .psiquiatria p {
+        width: 490px;
+    }
+    .neurologia p {
+        width: 400px;
+    }
+    .bordaGradiente {
+        transition: 0.6s all;
+        top: 2100px;
+    }
+    .containerCurriculo {
+        transition: 0.6s all;
+        flex-direction: row;
+        justify-content: center;
+        gap: 50px;
+        width: 1300px;
+        height: 450px;
+    }
+    .containerTexto {
+        transition: 0.6s all;
+        font-size: 24px;
+    }
+    .nomeDoutor {
+        display: flex;
+        width: 100%;
+        transition: 0.6s all;
+        text-wrap: nowrap;
+        font-size: 38px;
+    }
+    .curriculoDoutor {
+        width: 100%;
+        line-height: 30px;
+        font-size: 26px;
+    }
+    .imgDoutor img {
+        transition: 0.6s all;
+        width: 350px;
+        height: 350px;
+    }
+    .containerFooter {
+        transition: 0.6s all;
+        top: 2700px;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-evenly;
+        align-items: center;
+        color: #5F76AC;
+        padding: 60px 0;
+    }
+    .logoFooter {
+        transition: 0.6s all;
+        width: 250px;
+    }
+    .logoFooter img {
+        transition: 0.6s all;
+        height: 150px;
+    }
+    .horarios {
+        transition: 0.6s all;
+        margin: 0;
+        height: 100px;
+        text-wrap: nowrap;
+        flex-direction: row-reverse;
+        flex-direction: column;
+        align-items: start;
+    }
+    .horarios h2 {
+        font-size: 34px;
+    }
+    .horarios p {
+        font-size: 24px;
+    }
+    .horarios span {
+        font-size: 24px;
+    }
+    .containerContato2 {
+        transition: 0.6s all;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    .contatoInfo {
+        font-size: 24px;
+        text-align: start;
+        line-height: 40px;
+    }
+    .contato {
+        color: #5F76AC;
+        font-size: 34px;
+    }
+    .telefone {
+        font-size: 30px;
+    }
+    .textoFooter {
+        /* font-size: 18px; */
+    }
+}
