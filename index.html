@@ -4,193 +4,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
-    <link rel="icon" href="assets/favicon.png" type="image/x-icon">
+    <meta name="description"
+        content="Clínica Frayol: psiquiatria e neurologia para crianças, adolescentes e adultos. Agende sua consulta pelo WhatsApp.">
+    <link rel="icon" href="assets/favicon.png" type="image/png">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
-    <title>Fernando Rayol</title>
+    <title>Clínica Frayol | Dr. Fernando Rayol</title>
 </head>
 
 <body>
-    <header class="cabecalho">
-        <div class="containerLogo">
-            <img src="assets/logoFrayol.png" alt="" id="logoFrayol">
-            <div>CLÍNICA FRAYOL</div>
-        </div>
 
-        <div class="containerHamburguer">
-            <input type="checkbox" name="" id="menu-hamburguer">
-            <label for="menu-hamburguer">
-                <div class="menu">
-                    <span class="hamburguer"></span>
-                </div>
-            </label>
-        </div>
+    <!-- ================= CABEÇALHO ================= -->
+    <header class="cabecalho" id="cabecalho">
+        <a href="#inicio" class="logo">
+            <img src="assets/logoFrayol.png" alt="Logo da Clínica Frayol">
+            <span>CLÍNICA FRAYOL</span>
+        </a>
 
-        <ul class="lista">
-            <li class="especialidades"><a href="#especialidades" class="links">Especialidades</a></li>
-            <li class="contatoHeader"><a href="#contato" class="links" id="contatoHeader">Contato</a></li>
-            <li class="sobreMim"><a href="#sobreMim" class="links">Sobre mim</a></li>
-            <a href="https://wa.me/5598984299972?text=Olá,%20gostaria%20de%20marcar%20uma%20consulta!"
-                target="_blank"><img src="assets/whatsapp header.png" alt="" class="zapHeader"></a>
-        </ul>
+        <!-- Botão hambúrguer (só aparece no celular/tablet) -->
+        <button class="btn-menu" id="btnMenu" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+            <span class="btn-menu__barra"></span>
+        </button>
+
+        <!-- Menu de navegação -->
+        <nav class="menu" id="menu">
+            <ul class="menu__lista">
+                <li><a href="#especialidades" class="menu__link menu__link--azul">Especialidades</a></li>
+                <li><a href="#contato" class="menu__link menu__link--verde">Contato</a></li>
+                <li><a href="#sobre-mim" class="menu__link menu__link--marrom">Sobre mim</a></li>
+                <li>
+                    <a href="https://wa.me/5598984299972?text=Olá,%20gostaria%20de%20marcar%20uma%20consulta!"
+                        target="_blank" rel="noopener" class="menu__zap" aria-label="Chamar no WhatsApp">
+                        <img src="assets/whatsapp header.png" alt="">
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </header>
 
-    <main>
-        <img src="assets/imgKidsMaior.jpg" alt="" class="imgKids">
+    <main id="inicio">
 
-        <section class="fraseBtn">
-            <div class="frase">Cuide da sua saúde mental com quem <span>entende</span>.</div>
-            <a href="https://wa.me/5598984299972?text=Olá,%20gostaria%20de%20marcar%20uma%20consulta!"
-                target="_blank" rel="next"><input type="button" value="Agendar agora" class="btnAgendar"></a>
+        <!-- ================= HERO ================= -->
+        <section class="hero">
+            <img src="assets/imgKidsMaior.jpg" alt="" class="hero__imagem">
+
+            <div class="hero__conteudo">
+                <h1 class="hero__frase">Cuide da sua saúde mental com quem <span>entende</span>.</h1>
+                <a href="https://wa.me/5598984299972?text=Olá,%20gostaria%20de%20marcar%20uma%20consulta!"
+                    target="_blank" rel="noopener" class="btn-agendar">Agendar agora</a>
+            </div>
+
+            <div class="hero__botoes">
+                <a href="#especialidades" class="btn-especialidade">Psiquiatria</a>
+                <a href="#especialidades" class="btn-especialidade">Neurologia</a>
+            </div>
+
+            <!-- Imagens decorativas (não precisam de texto alternativo) -->
+            <div class="decoracao" aria-hidden="true">
+                <img src="assets/Asset 3.png" alt="" class="decoracao__item decoracao__peca">
+                <img src="assets/Asset 4.png" alt="" class="decoracao__item decoracao__peca2">
+                <img src="assets/asset 5.png" alt="" class="decoracao__item decoracao__cerebro2">
+                <img src="assets/asset 6.png" alt="" class="decoracao__item decoracao__peca3">
+            </div>
         </section>
 
-        <section class="containerBtn">
-            <a href="#especialidades">
-                <div class="btnPsiquiatria">Psiquiatria</div>
-            </a>
-            <a href="#especialidades">
-                <div class="btnNeurologia">Neurologia</div>
-            </a>
-        </section>
-
-        <img src="assets/Asset 3.png" alt="" class="imgPeca">
-
-        <img src="assets/Asset 4.png" alt="" class="imgPeca2">
-
-        <img src="assets/Asset 1.png" alt="" class="imgCerebro">
-
-        <img src="assets/asset 5.png" alt="" class="imgCerebro2">
-
-        <img src="assets/asset 6.png" alt="" class="imgPeca3">
-
-        <aside class="containerInformacoes">
-            <div class="informacoes">
+        <!-- ================= DIFERENCIAIS ================= -->
+        <aside class="diferenciais">
+            <div class="diferencial">
                 <img src="assets/$.png" alt="">
-                <div class="descricao">
-                    <span>Compromisso com a qualidade</span> Agende a sua consulta e descubra um novo padrão de cuidade
-                    em saúde.
+                <div class="diferencial__texto">
+                    <h2>Compromisso com a qualidade</h2>
+                    <p>Agende a sua consulta e descubra um novo padrão de cuidado em saúde.</p>
                 </div>
             </div>
-            <div class="riscoColorido"></div>
-            <div class="informacoes">
+
+            <div class="risco" aria-hidden="true"></div>
+
+            <div class="diferencial">
                 <img src="assets/cel.png" alt="">
-                <div class="descricao">
-                    <span>Agendamento online de consultas</span> Atendimento via whatsapp para agendar suas consultas de
-                    forma rápida e fácil.
+                <div class="diferencial__texto">
+                    <h2>Agendamento online de consultas</h2>
+                    <p>Atendimento via WhatsApp para agendar suas consultas de forma rápida e fácil.</p>
                 </div>
             </div>
-            <div class="riscoColorido"></div>
-            <div class="informacoes">
+
+            <div class="risco" aria-hidden="true"></div>
+
+            <div class="diferencial">
                 <img src="assets/especialistas.png" alt="">
-                <div class="descricao">
-                    <span>Conheça nossas especialidades</span> Sempre oferecendo o melhor para nossos pacientes.
+                <div class="diferencial__texto">
+                    <h2>Conheça nossas especialidades</h2>
+                    <p>Sempre oferecendo o melhor para nossos pacientes.</p>
                 </div>
             </div>
         </aside>
 
-        <div class="containerContato" id="contato">
-            <div class="contato">Contato</div>
-            <div class="contatoInfo">
-                <a href="https://wa.me/5598984299972?text=Olá,%20gostaria%20de%20marcar%20uma%20consulta!"
-                    target="_blank">Whatsapp</a>
-                <a href="https://wa.me/5598984299972?text=Olá,%20gostaria%20de%20marcar%20uma%20consulta!"
-                    target="_blank">
-                    <div class="telefone">
-                        <img src="assets/telefone.jpg" alt="">
-                        (98) 98429-9972
-                    </div>
-                </a>
-            </div>
-        </div>
+        <!-- ================= ESPECIALIDADES ================= -->
+        <section class="especialidades" id="especialidades">
+            <h2 class="titulo-linhas"><span></span>ESPECIALIDADES<span></span></h2>
 
-        <section class="containerEspecialidades" id="especialidades">
-            <div class="especialidadesPsiNeu">
-                <span></span> ESPECIALIDADES <span></span>
-            </div>
-
-            <div class="containerPsiNeuro">
-                <div class="psiquiatria" id="psiquiatriaId">
-                    <span>Psiquiatria</span>
+            <div class="especialidades__cards">
+                <article class="card-esp card-esp--psiquiatria">
+                    <h3>Psiquiatria</h3>
                     <p>Atendimento para crianças, adolescentes e adultos com foco em diagnóstico e tratamento de
                         transtornos mentais, emocionais e comportamentais. Acompanhamento com medicação, terapias e
-                        escuta qualificada. </p>
-                </div>
-                <div class="neurologia" id="neurologia">
-                    <span>Neurologia</span>
-                    <p>Avaliação e tratamento de distúrbios do sistema nervoso, como enxaquecas, epilepsia, distúrbios
-                        do sono, AVCs, entre outros. Atendimento especializado para todas as idades. </p>
-                </div>
+                        escuta qualificada.</p>
+                </article>
+
+                <article class="card-esp card-esp--neurologia">
+                    <h3>Neurologia</h3>
+                    <p>Avaliação e tratamento de distúrbios do sistema nervoso, como enxaquecas, epilepsia,
+                        distúrbios do sono, AVCs, entre outros. Atendimento especializado para todas as idades.</p>
+                </article>
             </div>
         </section>
 
-        <div class="bordaGradiente" id="sobreMim">
-            <section class="containerCurriculo">
-                <div class="imgDoutor">
-                    <img src="assets/Doutor-Fernando.jpg" alt="">
+        <!-- ================= SOBRE O DOUTOR ================= -->
+        <section class="sobre" id="sobre-mim">
+            <div class="curriculo">
+                <img src="assets/Doutor-Fernando.jpg" alt="Foto do Dr. Fernando Rayol de Araújo"
+                    class="curriculo__foto">
+
+                <div class="curriculo__texto">
+                    <h2>Fernando Rayol de Araújo</h2>
+
+                    <p>Formado em Medicina pela Universidade Federal do Maranhão – UFMA</p>
+
+                    <p>Pós-graduado em:</p>
+                    <ul class="curriculo__lista">
+                        <li>Psiquiatria e Psiquiatria da Infância e Adolescência – Faculdade Global-RS</li>
+                        <li>Neurologia Pediátrica – Unifatec-PR</li>
+                    </ul>
+
+                    <p>Graduando em Psiquiatria Forense – PUC-PR</p>
+                    <p>Médico perito das Justiças Federal e Estadual – MA</p>
                 </div>
-
-                <div class="containerTexto">
-                    <h2 class="nomeDoutor">
-                        Fernando Rayol de Araújo
-                    </h2>
-                    <div class="curriculoDoutor">
-                        Formado em Medicina pela Universidade Federal do Maranhão-UFMA
-
-                        Pós-graduado em:
-                        <ul class="listaCurriculo"><li>Psiquiatria e Psiquiatria da Infância e Adolescência – Faculdade Global-RS</li><li>Neurologia Pediátrica – Unifatec-PR</li></ul>
-                        Graduando em Psiquiatria Forense – PUC-PR
-
-                        Médico perito das Justiças Federal e Estadual – MA
-                    </div>
-
-                </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="containerFooter">
-        <div class="horarios">
+    <!-- ================= RODAPÉ (horário + contato + logo) ================= -->
+    <footer class="rodape">
+        <div class="rodape__bloco">
             <h2>Horário</h2>
-            <p><span>Segunda a Sexta</span> - 8h às 18h </p>
-            <p><span>Sábados</span> - 8h às 12h</p>
+            <p><strong>Segunda a Sexta</strong> – 8h às 18h</p>
+            <p><strong>Sábados</strong> – 8h às 12h</p>
         </div>
 
-        <div class="containerContato2" id="contato2">
-            <div class="contatoInfo">
-                <div class="contato">Contato</div>
-                <a href="https://wa.me/5598984299972?text=Olá,%20gostaria%20de%20marcar%20uma%20consulta!"
-                    target="_blank"><span>Whatsapp</span></a>
-                <a href="https://wa.me/5598984299972?text=Olá,%20gostaria%20de%20marcar%20uma%20consulta!"
-                    target="_blank">
-                    <div class="telefone">
-                        <img src="assets/telefoneFooter.png" alt="">
-                        (98) 98429-9972
-                    </div>
-                </a>
-            </div>
+        <!-- O link "Contato" do menu leva para cá (um único bloco de contato) -->
+        <div class="rodape__bloco rodape__bloco--contato" id="contato">
+            <h2>Contato</h2>
+            <a href="https://wa.me/5598984299972?text=Olá,%20gostaria%20de%20marcar%20uma%20consulta!"
+                target="_blank" rel="noopener">
+                <p>WhatsApp</p>
+                <p class="rodape__telefone">
+                    <img src="assets/telefoneFooter.png" alt="">
+                    (98) 98429-9972
+                </p>
+            </a>
         </div>
 
-        <div class="logoFooter">
-            <img src="assets/logoFooter.png" alt="">
-        </div>
+        <img src="assets/logoFooter.png" alt="Clínica Frayol" class="rodape__logo">
     </footer>
 
-
-
-    <div class="containerBtnFlutuante">
-        <a href="https://wa.me/5598984299972?text=Olá,%20gostaria%20de%20marcar%20uma%20consulta!" target="_blank"
-            class="btn-flutuante">
-            <img src="assets/whatsapp 3.png" alt="">
-            <div class="numeroClinica">(98) 98429-9972</div>
-        </a>
-    </div>
-
-
-    <label for="menu-hamburguer">
-        <div class="exitHamburguer"></div>
-    </label>
-
+    <!-- Botão flutuante do WhatsApp -->
+    <a href="https://wa.me/5598984299972?text=Olá,%20gostaria%20de%20marcar%20uma%20consulta!" target="_blank"
+        rel="noopener" class="btn-flutuante" aria-label="Chamar no WhatsApp">
+        <img src="assets/whatsapp 3.png" alt="">
+        <span>(98) 98429-9972</span>
+    </a>
 
     <script src="script.js"></script>
 </body>
