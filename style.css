@@ -1,19 +1,22 @@
 /* =========================================================
    CLÍNICA FRAYOL — CSS mobile-first
    Ideia: a página flui naturalmente (flex/grid), sem
-   position:absolute com "top" em pixels. Só 2 breakpoints.
+   position:absolute com "top" em pixels. Só 2 breakpoints:
+   700px (tablet) e 1000px (desktop).
    ========================================================= */
 
 /* ---------- Variáveis (mude a cor aqui e muda no site todo) ---------- */
 :root {
     --azul: #5F76AC;
-    --azul-menu: #5F7AA8;
+    --azul-escuro: #3E5287;
     --verde: #63B966;
+    --verde-escuro: #4FA253;
     --marrom: #87713B;
-    --cinza: #DDD;
+    --cinza: #E9ECF3;
+    --texto: #3A4560;
     --gradiente: linear-gradient(90deg, #5F76AC, #63B966, #886F3A, #EADA4B, #F00);
-    --altura-header: 70px;
-    --raio: 40px;
+    --altura-header: 72px;
+    --sombra: 0 10px 30px rgba(62, 82, 135, 0.18);
 }
 
 /* ---------- Base ---------- */
@@ -28,8 +31,9 @@ html {
 
 body {
     font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.5;
-    color: var(--azul);
+    line-height: 1.6;
+    color: var(--texto);
+    background: white;
     overflow-x: hidden;
 }
 
@@ -42,6 +46,80 @@ a {
 img {
     max-width: 100%;
     height: auto;
+}
+
+/* Foco visível para quem navega pelo teclado */
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--verde);
+    outline-offset: 3px;
+}
+
+/* ---------- Animação ao rolar ----------
+   Só esconde os elementos se o JS estiver ativo (classe .js no <html>) */
+.js .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.js .reveal.visivel {
+    opacity: 1;
+    transform: none;
+}
+
+/* Pequeno atraso para itens irmãos não aparecerem todos juntos */
+.reveal:nth-child(2) {
+    transition-delay: 0.12s;
+}
+
+.reveal:nth-child(3) {
+    transition-delay: 0.24s;
+}
+
+/* ---------- Botões ---------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 30px;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn--verde {
+    background: var(--verde);
+    color: white;
+    box-shadow: 0 8px 20px rgba(99, 185, 102, 0.45);
+}
+
+.btn--verde:hover {
+    background: var(--verde-escuro);
+}
+
+/* Botão "de vidro": transparente com borda branca (usado sobre a foto) */
+.btn--vidro {
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.12);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+}
+
+.btn--vidro:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.btn--branco {
+    background: white;
+    color: var(--azul-escuro);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* =========================================================
@@ -57,22 +135,33 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: white;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.25);
+    background: rgba(255, 255, 255, 0.92);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    transition: box-shadow 0.3s;
     z-index: 100;
+}
+
+/* O JS adiciona esta classe quando a página é rolada */
+.cabecalho--rolou {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
 }
 
 .logo {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1rem;
+    letter-spacing: 0.5px;
     color: var(--azul);
+    position: relative;
+    z-index: 110;
+    /* fica acima do menu aberto */
 }
 
 .logo img {
-    height: 48px;
+    height: 46px;
     width: auto;
 }
 
@@ -85,10 +174,8 @@ img {
     border: 0;
     cursor: pointer;
     z-index: 110;
-    /* fica acima do menu aberto */
 }
 
-/* Barra do meio + barras de cima e de baixo (pseudo-elementos) */
 .btn-menu__barra,
 .btn-menu__barra::before,
 .btn-menu__barra::after {
@@ -96,7 +183,7 @@ img {
     left: 10px;
     width: 24px;
     height: 3px;
-    background: var(--azul-menu);
+    background: var(--azul);
     border-radius: 3px;
     transition: transform 0.3s ease, top 0.3s ease, background 0.3s;
 }
@@ -119,7 +206,7 @@ img {
     top: 8px;
 }
 
-/* Quando o menu está aberto vira um "X" */
+/* Menu aberto: vira um "X" */
 .btn-menu[aria-expanded="true"] .btn-menu__barra {
     background: transparent;
 }
@@ -164,38 +251,57 @@ img {
 }
 
 .menu__link {
+    position: relative;
     font-size: 1.6rem;
     font-weight: 700;
-    transition: text-shadow 0.3s;
+    color: var(--azul);
+    transition: color 0.3s;
 }
 
-.menu__link--azul {
-    color: var(--azul-menu);
+/* Sublinhado animado no hover */
+.menu__link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 3px;
+    background: var(--verde);
+    border-radius: 3px;
+    transition: width 0.3s;
 }
 
-.menu__link--verde {
-    color: #67B262;
+.menu__link:hover {
+    color: var(--azul-escuro);
 }
 
-.menu__link--marrom {
-    color: var(--marrom);
+.menu__link:hover::after {
+    width: 100%;
 }
 
-.menu__link--azul:hover {
-    text-shadow: 0 0 12px cyan;
-}
-
-.menu__link--verde:hover {
-    text-shadow: 0 0 12px lime;
-}
-
-.menu__link--marrom:hover {
-    text-shadow: 0 0 12px var(--marrom);
-}
-
-/* Ícone do WhatsApp do menu: só aparece no desktop */
+/* Botão verde do WhatsApp dentro do menu */
 .menu__zap {
-    display: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: var(--verde);
+    color: white;
+    font-weight: 700;
+    font-size: 1.15rem;
+    border-radius: 14px;
+    box-shadow: 0 6px 16px rgba(99, 185, 102, 0.4);
+    transition: transform 0.3s, background 0.3s;
+}
+
+.menu__zap:hover {
+    background: var(--verde-escuro);
+    transform: translateY(-2px);
+}
+
+.menu__zap img {
+    width: 24px;
+    height: 24px;
 }
 
 /* =========================================================
@@ -203,16 +309,18 @@ img {
    ========================================================= */
 .hero {
     position: relative;
-    /* para a imagem de fundo ficar presa aqui dentro */
-    padding: calc(var(--altura-header) + 32px) 24px 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
+    isolation: isolate;
+    /* cria um "mundo" próprio para o z-index das camadas */
+    padding: calc(var(--altura-header) + 40px) 24px 24px;
     min-height: 100svh;
     /* svh = altura real da tela no celular */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
 }
 
+/* Foto de fundo (camada de trás) */
 .hero__imagem {
     position: absolute;
     inset: 0;
@@ -220,151 +328,165 @@ img {
     height: 100%;
     object-fit: cover;
     object-position: center 65%;
+    z-index: -2;
+    -webkit-mask-image: linear-gradient(to bottom, #000 75%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 75%, transparent 100%);
+}
+
+/* Camada azul escura por cima da foto: deixa o texto branco legível */
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
     z-index: -1;
-    /* some suavemente na parte de baixo */
-    -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+    background: linear-gradient(180deg, rgba(40, 55, 105, 0.7) 0%, rgba(40, 55, 105, 0.45) 60%, rgba(40, 55, 105, 0) 100%);
 }
 
 .hero__conteudo {
     width: 100%;
-    max-width: 700px;
+    max-width: 680px;
+    margin-inline: auto;
     color: white;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
-}
-
-.hero__frase {
-    font-size: clamp(2rem, 6vw, 3.4rem);
-    font-weight: 300;
-    line-height: 1.2;
-}
-
-.hero__frase span {
-    font-weight: 600;
-}
-
-.btn-agendar {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 28px;
-    background: var(--verde);
-    color: white;
-    font-weight: 700;
-    border-radius: 12px;
-    text-shadow: none;
-    transition: transform 0.3s;
-}
-
-.btn-agendar:hover {
-    transform: scale(1.08);
-}
-
-/* ---------- Botões Psiquiatria / Neurologia (borda com gradiente) ---------- */
-.hero__botoes {
-    margin-top: auto;
-    /* empurra os botões para o fim do hero */
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 18px;
 }
 
-.btn-especialidade {
-    width: 250px;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.25rem;
+.hero__selo {
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 999px;
+}
+
+.hero__frase {
+    font-size: clamp(2.1rem, 7vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.15;
+}
+
+.hero__frase span {
     font-weight: 700;
-    color: var(--azul-menu);
-    border-radius: 30px;
-    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.35);
-    transition: transform 0.3s;
-
-    /* Truque: fundo branco por dentro + gradiente só na borda */
-    border: 2px solid transparent;
-    background:
-        linear-gradient(white, white) padding-box,
-        var(--gradiente) border-box;
+    color: #C8F0CA;
 }
 
-.btn-especialidade:hover {
-    transform: scale(1.08);
+.hero__sub {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    opacity: 0.95;
+    max-width: 540px;
+}
+
+.hero__acoes {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    width: 100%;
+    max-width: 340px;
+    margin-top: 8px;
 }
 
 /* ---------- Imagens decorativas ---------- */
 .decoracao {
+    margin-top: auto;
     width: 100%;
-    max-width: 500px;
+    max-width: 520px;
+    margin-inline: auto;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
 }
 
+/* Tamanho fluido: cresce com a tela e nunca fica cortado ou distorcido */
 .decoracao__item {
-    width: 90px;
+    width: clamp(70px, 20vw, 130px);
     height: auto;
+    object-fit: contain;
+    animation: flutuar 4s ease-in-out infinite;
 }
 
-/* No celular mostramos só 2 peças; cerebro2 e peca3 aparecem no desktop */
+/* Cada peça começa em um momento diferente, para não mexerem juntas */
+.decoracao__cerebro {
+    animation-delay: -1.3s;
+}
+
+.decoracao__peca2 {
+    animation-delay: -2.6s;
+}
+
+@keyframes flutuar {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* No celular mostramos 3 peças; cerebro2 e peca3 aparecem no desktop */
 .decoracao__cerebro2,
 .decoracao__peca3 {
     display: none;
 }
 
 /* =========================================================
-   DIFERENCIAIS (faixa azul)
+   DIFERENCIAIS (faixa azul com 3 cartões)
    ========================================================= */
 .diferenciais {
     background: var(--azul);
-    color: white;
-    border-radius: 70px;
-    padding: 56px 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
+    border-radius: 56px;
+    padding: 48px 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .diferencial {
-    width: 100%;
-    max-width: 420px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 28px;
+    padding: 28px 24px;
+    color: white;
+    text-align: center;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 10px;
 }
 
 .diferencial img {
-    width: 46px;
-    height: 46px;
-    flex-shrink: 0;
-    transition: transform 0.7s;
+    width: 56px;
+    height: 56px;
+    padding: 6px;
+    transition: transform 0.6s;
 }
 
-.diferencial img:hover {
-    transform: rotate(30deg);
+.diferencial:hover img {
+    transform: rotate(20deg) scale(1.1);
 }
 
-.diferencial__texto h2 {
-    font-size: 1.4rem;
+.diferencial h2 {
+    font-size: 1.3rem;
     font-weight: 700;
     line-height: 1.3;
-    margin-bottom: 6px;
-}
-
-/* Risco colorido que separa os itens */
-.risco {
-    width: min(300px, 80%);
-    height: 2px;
-    background: linear-gradient(90deg, #5F76AC 0%, #63B966 25%, #886F3A 52%, #EADA4B 78%, #F00 100%);
 }
 
 /* =========================================================
    ESPECIALIDADES
    ========================================================= */
 .especialidades {
-    padding: 64px 24px;
+    padding: 72px 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -378,8 +500,10 @@ img {
     align-items: center;
     justify-content: center;
     gap: 20px;
-    font-size: clamp(1.4rem, 4vw, 2.4rem);
-    font-weight: 700;
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--azul);
     text-align: center;
 }
 
@@ -388,8 +512,8 @@ img {
     flex: 1;
     max-width: 400px;
     min-width: 20px;
-    height: 5px;
-    background: var(--azul);
+    height: 4px;
+    background: var(--gradiente);
     border-radius: 20px;
 }
 
@@ -398,27 +522,34 @@ img {
     max-width: 1200px;
     display: grid;
     grid-template-columns: 1fr;
-    /* 1 coluna no celular */
     gap: 28px;
     justify-items: center;
 }
 
 .card-esp {
     position: relative;
+    isolation: isolate;
     width: 100%;
     max-width: 560px;
     padding: 40px 28px;
-    border-radius: 50px;
+    border-radius: 40px;
     color: white;
     text-align: center;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     gap: 16px;
     background-position: center;
-    background-size: cover;
-    isolation: isolate;
+    background-size: 100%;
+    box-shadow: var(--sombra);
+    transition: background-size 0.8s ease, box-shadow 0.4s;
+}
+
+.card-esp:hover {
+    background-size: 112%;
+    box-shadow: 0 16px 40px rgba(62, 82, 135, 0.32);
 }
 
 /* Camada colorida por cima da foto */
@@ -434,7 +565,7 @@ img {
 }
 
 .card-esp--psiquiatria::before {
-    background: #5f76acc2;
+    background: #5f76acd6;
 }
 
 .card-esp--neurologia {
@@ -442,19 +573,34 @@ img {
 }
 
 .card-esp--neurologia::before {
-    background: #569750c5;
+    background: #4a8a4ad6;
 }
 
 .card-esp h3 {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
+    font-weight: 800;
+}
+
+.card-esp__link {
+    margin-top: 6px;
+    padding: 10px 22px;
     font-weight: 700;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    border-radius: 999px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.card-esp__link:hover {
+    background: white;
+    color: var(--azul-escuro);
 }
 
 /* =========================================================
    SOBRE O DOUTOR
    ========================================================= */
 .sobre {
-    padding: 0 24px 64px;
+    padding: 0 20px 72px;
     display: flex;
     justify-content: center;
 }
@@ -462,26 +608,28 @@ img {
 .curriculo {
     width: 100%;
     max-width: 1050px;
-    padding: 32px 24px;
-    border-radius: 70px;
+    padding: 36px 24px;
+    border-radius: 48px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 28px;
+    box-shadow: var(--sombra);
 
-    /* Borda com gradiente (mesmo truque dos botões) */
-    border: 2px solid transparent;
+    /* Borda com gradiente: fundo branco por dentro + gradiente só na borda */
+    border: 3px solid transparent;
     background:
         linear-gradient(white, white) padding-box,
         var(--gradiente) border-box;
 }
 
 .curriculo__foto {
-    width: min(240px, 70%);
+    width: min(260px, 75%);
     aspect-ratio: 1;
     object-fit: cover;
     object-position: center 80%;
-    border-radius: 30px;
+    border-radius: 32px;
+    box-shadow: var(--sombra);
 }
 
 .curriculo__texto {
@@ -490,10 +638,24 @@ img {
     gap: 12px;
 }
 
-.curriculo__texto h2 {
-    font-size: 1.6rem;
+.curriculo__selo {
+    align-self: center;
+    padding: 4px 14px;
+    font-size: 0.8rem;
     font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--verde-escuro);
+    background: #E6F5E7;
+    border-radius: 999px;
+}
+
+.curriculo__texto h2 {
+    font-size: 1.7rem;
+    font-weight: 800;
+    line-height: 1.25;
     text-align: center;
+    color: var(--azul);
 }
 
 .curriculo__lista {
@@ -501,14 +663,49 @@ img {
     margin-left: 24px;
 }
 
+.curriculo__lista li {
+    margin-bottom: 4px;
+}
+
+/* =========================================================
+   CHAMADA FINAL (faixa com botão)
+   ========================================================= */
+.chamada {
+    margin: 0 20px 72px;
+    padding: 48px 24px;
+    border-radius: 48px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(135deg, var(--azul) 0%, var(--azul-escuro) 55%, #4C8F52 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    box-shadow: var(--sombra);
+}
+
+.chamada h2 {
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.chamada .btn {
+    margin-top: 10px;
+}
+
 /* =========================================================
    RODAPÉ
    ========================================================= */
 .rodape {
     background: var(--cinza);
-    border-radius: 60px 60px 0 0;
-    padding: 48px 24px 120px;
-    /* espaço embaixo para o botão flutuante não cobrir */
+    border-radius: 48px 48px 0 0;
+    padding: 48px 24px 100px;
+    /* espaço embaixo para o botão flutuante não cobrir o texto */
+    color: var(--azul-escuro);
+}
+
+.rodape__topo {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -517,13 +714,9 @@ img {
 }
 
 .rodape__bloco h2 {
-    font-size: 1.6rem;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 800;
     margin-bottom: 8px;
-}
-
-.rodape__bloco p {
-    font-size: 1.1rem;
 }
 
 .rodape__telefone {
@@ -531,43 +724,63 @@ img {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    font-weight: 600;
-    font-size: 1.3rem !important;
+    font-weight: 700;
+    font-size: 1.35rem;
+    transition: color 0.3s;
+}
+
+.rodape__telefone:hover {
+    color: var(--verde-escuro);
 }
 
 .rodape__logo {
     width: 125px;
 }
 
+.rodape__copy {
+    margin-top: 36px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(62, 82, 135, 0.25);
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
 /* =========================================================
    BOTÃO FLUTUANTE DO WHATSAPP
-   (antes eram ~40 media queries de altura; agora é só bottom/right)
+   Celular: só o ícone, redondo. Tablet/desktop: ícone + número.
    ========================================================= */
 .btn-flutuante {
     position: fixed;
     right: 16px;
     bottom: 20px;
     z-index: 90;
-    height: 48px;
-    padding: 0 20px;
+    width: 56px;
+    height: 56px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     background: var(--verde);
     color: white;
     font-weight: 600;
-    border-radius: 24px;
-    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6);
-    transition: transform 0.3s;
+    border-radius: 999px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    transition: transform 0.3s, background 0.3s;
 }
 
 .btn-flutuante:hover {
-    transform: scale(1.08);
+    transform: scale(1.1);
+    background: var(--verde-escuro);
 }
 
 .btn-flutuante img {
-    width: 26px;
-    height: 26px;
+    width: 30px;
+    height: 30px;
+}
+
+.btn-flutuante span {
+    display: none;
 }
 
 /* =========================================================
@@ -582,47 +795,44 @@ img {
         font-size: 1.15rem;
     }
 
+    .logo img {
+        height: 54px;
+    }
+
     .hero {
         padding-inline: 48px;
     }
 
-    .hero__botoes {
+    .hero__acoes {
         flex-direction: row;
-        gap: 48px;
+        max-width: none;
+        width: auto;
     }
 
-    .btn-especialidade {
-        width: 300px;
-        height: 90px;
-        font-size: 1.5rem;
-    }
-
-    .decoracao__item {
-        width: 120px;
-    }
-
-    .diferencial__texto h2 {
-        font-size: 1.7rem;
-    }
-
-    .diferencial__texto p {
-        font-size: 1.15rem;
+    .diferenciais {
+        padding: 56px 40px;
     }
 
     .card-esp {
-        min-height: 260px;
+        min-height: 280px;
     }
 
     .curriculo {
-        padding: 40px;
+        padding: 44px;
     }
 
     .curriculo__texto {
-        font-size: 1.15rem;
+        font-size: 1.1rem;
     }
 
-    .rodape__bloco p {
-        font-size: 1.25rem;
+    /* Botão flutuante ganha o número */
+    .btn-flutuante {
+        width: auto;
+        padding: 0 22px;
+    }
+
+    .btn-flutuante span {
+        display: inline;
     }
 }
 
@@ -635,7 +845,7 @@ img {
     }
 
     .cabecalho {
-        padding: 0 40px;
+        padding: 0 48px;
     }
 
     /* Some o hambúrguer e o menu vira uma barra horizontal */
@@ -653,53 +863,36 @@ img {
 
     .menu__lista {
         flex-direction: row;
-        gap: 64px;
+        gap: 48px;
     }
 
     .menu__link {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 
     .menu__zap {
-        display: block;
+        font-size: 1rem;
+        padding: 10px 22px;
     }
 
-    .menu__zap img {
-        width: 34px;
-        height: 34px;
-    }
-
-    /* Hero maior */
+    /* Hero: texto alinhado à esquerda, em tela larga */
     .hero {
         padding-inline: 80px;
-        align-items: flex-start;
+    }
+
+    .hero::before {
+        background: linear-gradient(90deg, rgba(40, 55, 105, 0.78) 0%, rgba(40, 55, 105, 0.4) 55%, rgba(40, 55, 105, 0) 100%);
     }
 
     .hero__conteudo {
-        max-width: 700px;
+        margin-inline: 0;
+        align-items: flex-start;
+        text-align: left;
     }
 
-    .btn-agendar {
-        font-size: 1.3rem;
-        padding: 14px 40px;
-    }
-
-    .hero__botoes {
-        align-self: center;
-        gap: 100px;
-    }
-
-    .btn-especialidade {
-        width: 350px;
-    }
-
-    /* Decoração: no desktop mostra peca, cerebro2 e peca3 (peca2 some) */
+    /* Decoração: no desktop mostra peca, cerebro, cerebro2 e peca3 (peca2 some) */
     .decoracao {
         max-width: none;
-    }
-
-    .decoracao__item {
-        width: 110px;
     }
 
     .decoracao__peca2 {
@@ -711,25 +904,20 @@ img {
         display: block;
     }
 
-    /* Diferenciais lado a lado, com risco vertical */
+    /* Diferenciais lado a lado */
     .diferenciais {
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        gap: 24px;
-        border-radius: 100px;
-        padding: 60px 40px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+        border-radius: 90px;
+        padding: 64px 64px;
     }
 
     .diferencial {
-        flex: 1;
-        max-width: 380px;
+        padding: 36px 28px;
     }
 
-    .risco {
-        width: 2px;
-        height: 220px;
-        background: linear-gradient(180deg, #5F76AC 0%, #63B966 25%, #886F3A 52%, #EADA4B 78%, #F00 100%);
+    .diferencial h2 {
+        font-size: 1.45rem;
     }
 
     /* Cards lado a lado */
@@ -743,28 +931,32 @@ img {
     }
 
     .card-esp {
-        min-height: 330px;
-        padding: 40px 56px;
+        min-height: 340px;
+        padding: 44px 56px;
     }
 
     .card-esp h3 {
-        font-size: 1.9rem;
+        font-size: 2rem;
     }
 
     .card-esp p {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
     }
 
     /* Currículo: foto ao lado do texto */
     .curriculo {
         flex-direction: row;
-        gap: 56px;
-        padding: 48px 72px;
+        gap: 64px;
+        padding: 52px 72px;
     }
 
     .curriculo__foto {
         width: 320px;
         flex-shrink: 0;
+    }
+
+    .curriculo__selo {
+        align-self: flex-start;
     }
 
     .curriculo__texto h2 {
@@ -773,20 +965,26 @@ img {
     }
 
     .curriculo__texto {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+    }
+
+    /* Chamada final */
+    .chamada {
+        max-width: 1050px;
+        margin-inline: auto;
+        padding: 64px 40px;
     }
 
     /* Rodapé em linha */
     .rodape {
+        padding: 64px 48px 40px;
+    }
+
+    .rodape__topo {
         flex-direction: row-reverse;
         justify-content: space-evenly;
         align-items: center;
         text-align: left;
-        padding: 60px 40px 100px;
-    }
-
-    .rodape__bloco h2 {
-        font-size: 2rem;
     }
 
     .rodape__telefone {
@@ -798,17 +996,16 @@ img {
     }
 }
 
-/* Telas muito grandes: limita o crescimento do hero */
-@media (min-width: 1550px) {
-    .hero__frase {
-        font-size: 4rem;
-    }
-}
-
 /* Respeita quem prefere menos animação */
 @media (prefers-reduced-motion: reduce) {
     * {
         transition: none !important;
+        animation: none !important;
         scroll-behavior: auto !important;
+    }
+
+    .js .reveal {
+        opacity: 1;
+        transform: none;
     }
 }
