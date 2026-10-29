@@ -173,7 +173,7 @@ button:focus-visible {
     background: none;
     border: 0;
     cursor: pointer;
-    z-index: 110;
+    z-index: 300;
 }
 
 .btn-menu__barra,
@@ -238,6 +238,9 @@ button:focus-visible {
 .menu.aberto {
     opacity: 1;
     visibility: visible;
+    background-color: white;
+    z-index: 150;
+    height: 300px;
 }
 
 .menu__lista {
