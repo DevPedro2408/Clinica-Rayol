@@ -59,8 +59,12 @@ button:focus-visible {
    Só esconde os elementos se o JS estiver ativo (classe .js no <html>) */
 .js .reveal {
     opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+    transform: translateY(20px);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease,
+        background-size 0.8s ease,
+        box-shadow 0.4s ease;
 }
 
 .js .reveal.visivel {
@@ -1002,7 +1006,6 @@ button:focus-visible {
 /* Respeita quem prefere menos animação */
 @media (prefers-reduced-motion: reduce) {
     * {
-        transition: none !important;
         animation: none !important;
         scroll-behavior: auto !important;
     }
