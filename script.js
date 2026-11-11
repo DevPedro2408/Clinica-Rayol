@@ -8,6 +8,7 @@ const cabecalho = document.querySelector('#cabecalho');
 const btnMenu = document.querySelector('#btnMenu');
 const menu = document.querySelector('#menu');
 const linksMenu = document.querySelectorAll('.menu a');
+const bordaMenu = document.querySelector('#bordaMenu')
 
 // ---------- 1) Menu mobile ----------
 // Abre ou fecha o menu (abrir = true / false)
@@ -23,7 +24,16 @@ function alternarMenu(abrir) {
 btnMenu.addEventListener('click', () => {
     const estaAberto = menu.classList.contains('aberto');
     alternarMenu(!estaAberto);
+
+    bordaMenu.classList.toggle('bordaMenuAberta')
 });
+
+bordaMenu.addEventListener('click', () => {
+    const estaAberto = menu.classList.contains('aberto');
+    alternarMenu(!estaAberto);
+
+    bordaMenu.classList.toggle('bordaMenuAberta')
+})
 
 // Clicou em qualquer link do menu: fecha
 linksMenu.forEach((link) => {
