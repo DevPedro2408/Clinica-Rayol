@@ -40,7 +40,7 @@ linksMenu.forEach((link) => {
     link.addEventListener('click', () => {
         alternarMenu(false)
 
-        bordaMenu.classList.toggle('bordaMenuAberta')
+        bordaMenu.classList.remove('bordaMenuAberta')
     });
 });
 
@@ -52,8 +52,6 @@ document.addEventListener('keydown', (evento) => {
 // Se a tela crescer para desktop com o menu aberto, reseta tudo
 window.addEventListener('resize', () => {
     if (window.innerWidth >= 1000) alternarMenu(false);
-
-    bordaMenu.classList.remove('bordaMenuAberta')
 });
 
 // ---------- 2) Sombra no cabeçalho ao rolar ----------
