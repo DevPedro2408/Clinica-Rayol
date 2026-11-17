@@ -37,7 +37,11 @@ bordaMenu.addEventListener('click', () => {
 
 // Clicou em qualquer link do menu: fecha
 linksMenu.forEach((link) => {
-    link.addEventListener('click', () => alternarMenu(false));
+    link.addEventListener('click', () => {
+        alternarMenu(false)
+
+        bordaMenu.classList.toggle('bordaMenuAberta')
+    });
 });
 
 // Tecla ESC fecha o menu
